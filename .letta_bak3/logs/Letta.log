@@ -1,0 +1,624 @@
+2026-02-11 15:28:11,145 - Letta.letta.schemas.providers.base - WARNING - DEPRECATION: Creating provider with 'api_key' directly is deprecated. Use the encrypted fields (`api_key_enc`) instead.
+2026-02-11 15:28:11,145 - Letta.letta.schemas.providers.base - WARNING - DEPRECATION: Creating provider with 'access_key' directly is deprecated. Use the encrypted fields (`access_key_enc`) instead.
+2026-02-11 15:28:11,147 - Letta.letta.server.global_exception_handler - INFO - Global exception handlers initialized
+2026-02-11 15:28:14,277 - Letta.letta.monitoring.event_loop_watchdog - INFO - Event loop watchdog started - monitoring thread running, heartbeat every 1s, checks every 5.0s, hang threshold: 15.0s
+2026-02-11 15:28:14,279 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Event loop watchdog started
+2026-02-11 15:28:14,533 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Checking NLTK data availability...
+2026-02-11 15:28:18,904 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] NLTK data ready
+2026-02-11 15:28:19,222 - Letta.letta.server.rest_api.app - WARNING - [Worker 212856] PostgreSQL statement_timeout: 0
+2026-02-11 15:28:19,229 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Disabled pinecone
+2026-02-11 15:28:19,230 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Starting scheduler with leader election
+2026-02-11 15:28:20,225 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Reading org-scoped model User without actor. IDs: ['user-00000000-0000-4000-8000-000000000000']. This bypasses organization filtering.
+2026-02-11 15:28:27,808 - Letta.letta.services.provider_manager - INFO - Syncing 2 base providers to database
+2026-02-11 15:28:27,809 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model Provider without actor. This bypasses organization filtering.
+2026-02-11 15:28:28,018 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model Provider without actor. This bypasses organization filtering.
+2026-02-11 15:28:28,023 - Letta.letta.server.server - INFO - Syncing provider models to database
+2026-02-11 15:28:28,191 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model Provider without actor. This bypasses organization filtering.
+2026-02-11 15:28:28,212 - Letta.letta.server.server - ERROR - Failed to sync models for provider bedrock: No module named 'aioboto3'
+Traceback (most recent call last):
+  File "D:\memoRaxis\third_party\letta\letta\server\server.py", line 462, in _sync_provider_models_async
+    llm_models = await enabled_provider.list_llm_models_async()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\schemas\providers\bedrock.py", line 81, in list_llm_models_async
+    models = await self.bedrock_get_model_list_async()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\schemas\providers\bedrock.py", line 54, in bedrock_get_model_list_async
+    from aioboto3.session import Session
+ModuleNotFoundError: No module named 'aioboto3'
+2026-02-11 15:28:28,215 - Letta.letta.services.provider_manager - INFO - === Starting sync for provider 'letta' (ID: provider-191e3f4b-abe4-4205-ab81-932039746fed) ===
+2026-02-11 15:28:28,216 - Letta.letta.services.provider_manager - INFO -   Organization ID: None
+2026-02-11 15:28:28,217 - Letta.letta.services.provider_manager - INFO -   LLM models to sync: ['letta/letta-free']
+2026-02-11 15:28:28,217 - Letta.letta.services.provider_manager - INFO -   Embedding models to sync: ['letta/letta-free']
+2026-02-11 15:28:28,621 - Letta.letta.services.provider_manager - INFO - Processing 1 LLM models for provider letta
+2026-02-11 15:28:28,621 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: letta/letta-free (name: letta-free)
+2026-02-11 15:28:28,622 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:28:28,789 - Letta.letta.services.provider_manager - INFO -     LLM model letta/letta-free already exists (ID: model-475579d9-d04f-4629-86ec-3b1283afdf01), skipping
+2026-02-11 15:28:28,790 - Letta.letta.services.provider_manager - INFO - Processing 1 embedding models for provider letta
+2026-02-11 15:28:28,791 - Letta.letta.services.provider_manager - INFO -   Checking embedding model: letta/letta-free (name: letta-free)
+2026-02-11 15:28:28,792 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:28:28,795 - Letta.letta.services.provider_manager - INFO -     Embedding model letta/letta-free already exists (ID: model-91914330-4ea1-4d00-b9ac-287bca73209b), skipping
+2026-02-11 15:28:28,805 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Reading org-scoped model Provider without actor. IDs: ['provider-191e3f4b-abe4-4205-ab81-932039746fed']. This bypasses organization filtering.
+2026-02-11 15:28:29,044 - Letta.letta.server.server - INFO - Synced 1 LLM models and 1 embedding models for provider letta
+2026-02-11 15:28:29,048 - Letta.letta.data_sources.redis_client - INFO - Redis not configured, using noop client
+2026-02-11 15:28:29,258 - Letta.letta.server.server - WARNING - LETTA_TOOL_SANDBOX_DIR does not exist, creating now: C:\Users\ºÎ¸ß°º\.letta\tool_execution_dir
+2026-02-11 15:28:29,273 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model SandboxConfig without actor. This bypasses organization filtering.
+2026-02-11 15:28:30,206 - Letta.letta.jobs.scheduler - INFO - Batch job polling is disabled.
+2026-02-11 15:28:30,207 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Scheduler initialization completed
+2026-02-11 15:28:30,208 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Lifespan startup completed
+2026-02-11 15:32:41,801 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Starting lifespan shutdown
+2026-02-11 15:32:41,802 - Letta.letta.jobs.scheduler - INFO - Shutting down: Non-leader instance.
+2026-02-11 15:32:41,803 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Scheduler shutdown completed
+2026-02-11 15:32:41,804 - Letta.letta.server.rest_api.app - INFO - [Worker 212856] Lifespan shutdown completed
+2026-02-11 15:32:51,343 - Letta.letta.schemas.providers.base - WARNING - DEPRECATION: Creating provider with 'api_key' directly is deprecated. Use the encrypted fields (`api_key_enc`) instead.
+2026-02-11 15:32:51,344 - Letta.letta.schemas.providers.base - WARNING - DEPRECATION: Creating provider with 'access_key' directly is deprecated. Use the encrypted fields (`access_key_enc`) instead.
+2026-02-11 15:32:51,345 - Letta.letta.server.global_exception_handler - INFO - Global exception handlers initialized
+2026-02-11 15:32:53,896 - Letta.letta.monitoring.event_loop_watchdog - INFO - Event loop watchdog started - monitoring thread running, heartbeat every 1s, checks every 5.0s, hang threshold: 15.0s
+2026-02-11 15:32:53,897 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Event loop watchdog started
+2026-02-11 15:32:54,089 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Checking NLTK data availability...
+2026-02-11 15:32:55,606 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] NLTK data ready
+2026-02-11 15:32:55,843 - Letta.letta.server.rest_api.app - WARNING - [Worker 204232] PostgreSQL statement_timeout: 0
+2026-02-11 15:32:55,850 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Disabled pinecone
+2026-02-11 15:32:55,851 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Starting scheduler with leader election
+2026-02-11 15:32:56,220 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Reading org-scoped model User without actor. IDs: ['user-00000000-0000-4000-8000-000000000000']. This bypasses organization filtering.
+2026-02-11 15:33:01,570 - Letta.letta.services.provider_manager - INFO - Syncing 2 base providers to database
+2026-02-11 15:33:01,570 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model Provider without actor. This bypasses organization filtering.
+2026-02-11 15:33:01,673 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model Provider without actor. This bypasses organization filtering.
+2026-02-11 15:33:01,677 - Letta.letta.server.server - INFO - Syncing provider models to database
+2026-02-11 15:33:01,756 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model Provider without actor. This bypasses organization filtering.
+2026-02-11 15:33:01,861 - Letta.letta.schemas.providers.base - WARNING - DEPRECATION: Accessing 'access_key' directly is deprecated. Use the encrypted fields (`api_key_enc`/`access_key_enc`) instead.
+2026-02-11 15:33:01,863 - Letta.letta.schemas.providers.base - WARNING - DEPRECATION: Accessing 'api_key' directly is deprecated. Use the encrypted fields (`api_key_enc`/`access_key_enc`) instead.
+2026-02-11 15:33:04,447 - Letta.letta.services.provider_manager - INFO - === Starting sync for provider 'bedrock' (ID: provider-d4e4cd89-bec5-4d7f-a32e-06cfb80d1dc2) ===
+2026-02-11 15:33:04,452 - Letta.letta.services.provider_manager - INFO -   Organization ID: None
+2026-02-11 15:33:04,454 - Letta.letta.services.provider_manager - INFO -   LLM models to sync: ['bedrock/us.anthropic.claude-3-sonnet-20240229-v1:0', 'bedrock/us.anthropic.claude-3-opus-20240229-v1:0', 'bedrock/us.anthropic.claude-3-haiku-20240307-v1:0', 'bedrock/us.meta.llama3-2-11b-instruct-v1:0', 'bedrock/us.meta.llama3-2-3b-instruct-v1:0', 'bedrock/us.meta.llama3-2-90b-instruct-v1:0', 'bedrock/us.meta.llama3-2-1b-instruct-v1:0', 'bedrock/us.anthropic.claude-3-5-sonnet-20240620-v1:0', 'bedrock/us.anthropic.claude-3-5-haiku-20241022-v1:0', 'bedrock/us.meta.llama3-1-8b-instruct-v1:0', 'bedrock/us.meta.llama3-1-70b-instruct-v1:0', 'bedrock/us.meta.llama3-3-70b-instruct-v1:0', 'bedrock/us.deepseek.r1-v1:0', 'bedrock/us.mistral.pixtral-large-2502-v1:0', 'bedrock/us.meta.llama4-scout-17b-instruct-v1:0', 'bedrock/us.meta.llama4-maverick-17b-instruct-v1:0', 'bedrock/us.amazon.nova-premier-v1:0', 'bedrock/us.anthropic.claude-opus-4-20250514-v1:0', 'bedrock/us.twelvelabs.pegasus-1-2-v1:0', 'bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0', 'bedrock/us.stability.stable-conservative-upscale-v1:0', 'bedrock/us.twelvelabs.marengo-embed-2-7-v1:0', 'bedrock/us.stability.stable-creative-upscale-v1:0', 'bedrock/us.stability.stable-fast-upscale-v1:0', 'bedrock/us.stability.stable-image-control-sketch-v1:0', 'bedrock/us.stability.stable-image-control-structure-v1:0', 'bedrock/us.stability.stable-image-erase-object-v1:0', 'bedrock/us.stability.stable-image-inpaint-v1:0', 'bedrock/us.stability.stable-image-remove-background-v1:0', 'bedrock/us.stability.stable-image-search-replace-v1:0', 'bedrock/us.stability.stable-image-search-recolor-v1:0', 'bedrock/us.stability.stable-image-style-guide-v1:0', 'bedrock/us.stability.stable-outpaint-v1:0', 'bedrock/us.stability.stable-style-transfer-v1:0', 'bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0', 'bedrock/us.cohere.embed-v4:0', 'bedrock/global.cohere.embed-v4:0', 'bedrock/us.twelvelabs.marengo-embed-3-0-v1:0', 'bedrock/us.amazon.nova-pro-v1:0', 'bedrock/us.anthropic.claude-3-5-sonnet-20241022-v2:0', 'bedrock/global.twelvelabs.pegasus-1-2-v1:0', 'bedrock/us.amazon.nova-micro-v1:0', 'bedrock/us.writer.palmyra-x4-v1:0', 'bedrock/us.writer.palmyra-x5-v1:0', 'bedrock/global.amazon.nova-2-lite-v1:0', 'bedrock/us.amazon.nova-2-lite-v1:0', 'bedrock/us.anthropic.claude-opus-4-5-20251101-v1:0', 'bedrock/us.anthropic.claude-opus-4-1-20250805-v1:0', 'bedrock/us.anthropic.claude-sonnet-4-5-20250929-v1:0', 'bedrock/us.amazon.nova-lite-v1:0', 'bedrock/us.anthropic.claude-opus-4-6-v1', 'bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0']
+2026-02-11 15:33:04,458 - Letta.letta.services.provider_manager - INFO -   Embedding models to sync: []
+2026-02-11 15:33:04,845 - Letta.letta.services.provider_manager - INFO - Processing 52 LLM models for provider bedrock
+2026-02-11 15:33:04,848 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-sonnet-20240229-v1:0 (name: claude-3-sonnet-20240229)
+2026-02-11 15:33:04,851 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,694 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-sonnet-20240229-v1:0 already exists (ID: model-0a3e0def-42db-46ff-98e2-3d2f2916b4da), skipping
+2026-02-11 15:33:05,695 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-opus-20240229-v1:0 (name: claude-3-opus-20240229)
+2026-02-11 15:33:05,697 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,701 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-opus-20240229-v1:0 already exists (ID: model-5d748d2d-1f35-4180-a868-88d3da5ca95f), skipping
+2026-02-11 15:33:05,703 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-haiku-20240307-v1:0 (name: claude-3-haiku-20240307)
+2026-02-11 15:33:05,703 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,710 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-haiku-20240307-v1:0 already exists (ID: model-9b44ab01-72f3-47ca-a7bb-3052a21cb4cc), skipping
+2026-02-11 15:33:05,713 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-2-11b-instruct-v1:0 (name: us.meta.llama3-2-11b-instruct)
+2026-02-11 15:33:05,715 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,721 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-2-11b-instruct-v1:0 already exists (ID: model-f5d88667-e559-4148-9f0e-7536a026062a), skipping
+2026-02-11 15:33:05,722 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-2-3b-instruct-v1:0 (name: us.meta.llama3-2-3b-instruct)
+2026-02-11 15:33:05,723 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,731 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-2-3b-instruct-v1:0 already exists (ID: model-fe3f309d-ec3c-4ea8-9fea-30b42810707f), skipping
+2026-02-11 15:33:05,732 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-2-90b-instruct-v1:0 (name: us.meta.llama3-2-90b-instruct)
+2026-02-11 15:33:05,733 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,740 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-2-90b-instruct-v1:0 already exists (ID: model-aef1ddc9-ffd7-4b9d-a56a-d0c068a09021), skipping
+2026-02-11 15:33:05,742 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-2-1b-instruct-v1:0 (name: us.meta.llama3-2-1b-instruct)
+2026-02-11 15:33:05,743 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,750 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-2-1b-instruct-v1:0 already exists (ID: model-39c31c7c-f410-4b85-a69d-97eb4ad22f37), skipping
+2026-02-11 15:33:05,751 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-5-sonnet-20240620-v1:0 (name: claude-3-5-sonnet-20240620)
+2026-02-11 15:33:05,752 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,760 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-5-sonnet-20240620-v1:0 already exists (ID: model-4e331bc9-daf7-4688-9771-b922b8ad9910), skipping
+2026-02-11 15:33:05,762 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-5-haiku-20241022-v1:0 (name: claude-3-5-haiku-20241022)
+2026-02-11 15:33:05,762 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,769 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-5-haiku-20241022-v1:0 already exists (ID: model-91010f2b-291f-4f18-9ae1-666f9d0fcddd), skipping
+2026-02-11 15:33:05,771 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-1-8b-instruct-v1:0 (name: us.meta.llama3-1-8b-instruct)
+2026-02-11 15:33:05,772 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,774 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-1-8b-instruct-v1:0 already exists (ID: model-a1287da6-6bd1-4fa7-87ae-3e6d183cd64a), skipping
+2026-02-11 15:33:05,775 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-1-70b-instruct-v1:0 (name: us.meta.llama3-1-70b-instruct)
+2026-02-11 15:33:05,776 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,780 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-1-70b-instruct-v1:0 already exists (ID: model-e54135a6-2f08-40dd-beeb-e6055987e50d), skipping
+2026-02-11 15:33:05,780 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama3-3-70b-instruct-v1:0 (name: us.meta.llama3-3-70b-instruct)
+2026-02-11 15:33:05,781 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,783 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama3-3-70b-instruct-v1:0 already exists (ID: model-37086390-b58f-4603-bc5f-05149c1bda96), skipping
+2026-02-11 15:33:05,784 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.deepseek.r1-v1:0 (name: us.deepseek.r1)
+2026-02-11 15:33:05,784 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,787 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.deepseek.r1-v1:0 already exists (ID: model-cabbb3cb-a8db-44de-a402-a0f420b72a71), skipping
+2026-02-11 15:33:05,787 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.mistral.pixtral-large-2502-v1:0 (name: us.mistral.pixtral-large-2502)
+2026-02-11 15:33:05,787 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,789 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.mistral.pixtral-large-2502-v1:0 already exists (ID: model-d9c9361e-2595-403d-ac4f-f4edddb112d0), skipping
+2026-02-11 15:33:05,789 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama4-scout-17b-instruct-v1:0 (name: us.meta.llama4-scout-17b-instruct)
+2026-02-11 15:33:05,789 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,792 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama4-scout-17b-instruct-v1:0 already exists (ID: model-0c4347b3-2051-4f5a-ba66-1104f7ed05b3), skipping
+2026-02-11 15:33:05,793 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.meta.llama4-maverick-17b-instruct-v1:0 (name: us.meta.llama4-maverick-17b-instruct)
+2026-02-11 15:33:05,795 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,797 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.meta.llama4-maverick-17b-instruct-v1:0 already exists (ID: model-13b4b877-5fde-4fd6-9468-da89a37097c4), skipping
+2026-02-11 15:33:05,797 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.amazon.nova-premier-v1:0 (name: us.amazon.nova-premier)
+2026-02-11 15:33:05,798 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,800 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.amazon.nova-premier-v1:0 already exists (ID: model-536905f2-4a08-4292-a510-831b41b850d0), skipping
+2026-02-11 15:33:05,802 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-opus-4-20250514-v1:0 (name: claude-opus-4-20250514)
+2026-02-11 15:33:05,803 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,805 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-opus-4-20250514-v1:0 already exists (ID: model-f3038018-20a2-4fa4-87c6-60aae2eb5ab3), skipping
+2026-02-11 15:33:05,805 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.twelvelabs.pegasus-1-2-v1:0 (name: us.twelvelabs.pegasus-1-2)
+2026-02-11 15:33:05,806 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,808 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.twelvelabs.pegasus-1-2-v1:0 already exists (ID: model-f5135ed1-c336-4f71-8f0f-7744d8b63891), skipping
+2026-02-11 15:33:05,809 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0 (name: claude-sonnet-4-20250514)
+2026-02-11 15:33:05,809 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,811 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0 already exists (ID: model-239b8396-3ea8-4016-a1cb-88fa1221c1fa), skipping
+2026-02-11 15:33:05,811 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-conservative-upscale-v1:0 (name: us.stability.stable-conservative-upscale)
+2026-02-11 15:33:05,812 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,813 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-conservative-upscale-v1:0 already exists (ID: model-e51b152a-204d-45f4-ab93-fedf9fbb5a28), skipping
+2026-02-11 15:33:05,814 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.twelvelabs.marengo-embed-2-7-v1:0 (name: us.twelvelabs.marengo-embed-2-7)
+2026-02-11 15:33:05,815 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,823 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.twelvelabs.marengo-embed-2-7-v1:0 already exists (ID: model-71a29a7f-d49a-44da-9916-0c8a2f37c7d5), skipping
+2026-02-11 15:33:05,823 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-creative-upscale-v1:0 (name: us.stability.stable-creative-upscale)
+2026-02-11 15:33:05,824 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,826 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-creative-upscale-v1:0 already exists (ID: model-8ab4d071-c190-40b2-b821-df0dc13d5ebf), skipping
+2026-02-11 15:33:05,827 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-fast-upscale-v1:0 (name: us.stability.stable-fast-upscale)
+2026-02-11 15:33:05,827 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,829 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-fast-upscale-v1:0 already exists (ID: model-78b82f1b-b5aa-4376-b0d7-f823eec3420e), skipping
+2026-02-11 15:33:05,830 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-control-sketch-v1:0 (name: us.stability.stable-image-control-sketch)
+2026-02-11 15:33:05,830 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,837 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-control-sketch-v1:0 already exists (ID: model-458f8cc1-5ed6-4e07-9077-8957ab25bfb7), skipping
+2026-02-11 15:33:05,838 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-control-structure-v1:0 (name: us.stability.stable-image-control-structure)
+2026-02-11 15:33:05,838 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,840 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-control-structure-v1:0 already exists (ID: model-19d7d219-3306-4211-98b6-8dc31f75f5ef), skipping
+2026-02-11 15:33:05,840 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-erase-object-v1:0 (name: us.stability.stable-image-erase-object)
+2026-02-11 15:33:05,841 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,843 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-erase-object-v1:0 already exists (ID: model-2f5ea3b0-71d0-44e4-906a-6e7160d9b57e), skipping
+2026-02-11 15:33:05,843 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-inpaint-v1:0 (name: us.stability.stable-image-inpaint)
+2026-02-11 15:33:05,843 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,853 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-inpaint-v1:0 already exists (ID: model-e3f44479-426c-4c69-8758-b02304c94b38), skipping
+2026-02-11 15:33:05,853 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-remove-background-v1:0 (name: us.stability.stable-image-remove-background)
+2026-02-11 15:33:05,854 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,855 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-remove-background-v1:0 already exists (ID: model-340e184f-c00c-4f22-ae7b-ceb3f13c08b5), skipping
+2026-02-11 15:33:05,856 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-search-replace-v1:0 (name: us.stability.stable-image-search-replace)
+2026-02-11 15:33:05,856 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,859 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-search-replace-v1:0 already exists (ID: model-924069d7-6e40-4b4b-9e99-0105a440271f), skipping
+2026-02-11 15:33:05,866 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-search-recolor-v1:0 (name: us.stability.stable-image-search-recolor)
+2026-02-11 15:33:05,866 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,870 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-search-recolor-v1:0 already exists (ID: model-d69b02d6-5986-42b9-af7b-67ccaccf7864), skipping
+2026-02-11 15:33:05,870 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-image-style-guide-v1:0 (name: us.stability.stable-image-style-guide)
+2026-02-11 15:33:05,871 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,876 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-image-style-guide-v1:0 already exists (ID: model-0910a9aa-5b68-4e67-ace2-83e22a6f7de5), skipping
+2026-02-11 15:33:05,878 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-outpaint-v1:0 (name: us.stability.stable-outpaint)
+2026-02-11 15:33:05,879 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,884 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-outpaint-v1:0 already exists (ID: model-339df667-c3c5-4797-bae5-c3b9f7ec9a97), skipping
+2026-02-11 15:33:05,885 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.stability.stable-style-transfer-v1:0 (name: us.stability.stable-style-transfer)
+2026-02-11 15:33:05,886 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,894 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.stability.stable-style-transfer-v1:0 already exists (ID: model-ed6ca96b-a6d5-4442-af8e-24b6ae1eb5d1), skipping
+2026-02-11 15:33:05,896 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0 (name: claude-3-7-sonnet-20250219)
+2026-02-11 15:33:05,899 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,905 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0 already exists (ID: model-ab1c7b54-4990-4552-bad8-9e870edd60da), skipping
+2026-02-11 15:33:05,910 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.cohere.embed-v4:0 (name: us.cohere.embed)
+2026-02-11 15:33:05,912 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,920 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.cohere.embed-v4:0 already exists (ID: model-af52c8a3-9a4c-4473-ab5f-3ecd1362990f), skipping
+2026-02-11 15:33:05,921 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/global.cohere.embed-v4:0 (name: global.cohere.embed)
+2026-02-11 15:33:05,922 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,928 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/global.cohere.embed-v4:0 already exists (ID: model-82b33d50-d22f-418d-a84c-e19ceabb79d0), skipping
+2026-02-11 15:33:05,929 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.twelvelabs.marengo-embed-3-0-v1:0 (name: us.twelvelabs.marengo-embed-3-0)
+2026-02-11 15:33:05,930 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,936 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.twelvelabs.marengo-embed-3-0-v1:0 already exists (ID: model-47e59dea-27e2-4a8c-b4fb-ceefd8e0f336), skipping
+2026-02-11 15:33:05,939 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.amazon.nova-pro-v1:0 (name: us.amazon.nova-pro)
+2026-02-11 15:33:05,939 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,946 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.amazon.nova-pro-v1:0 already exists (ID: model-2e47d6ba-89a9-4a04-b07a-68372713c37d), skipping
+2026-02-11 15:33:05,948 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-3-5-sonnet-20241022-v2:0 (name: claude-3-5-sonnet-20241022)
+2026-02-11 15:33:05,949 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,956 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-3-5-sonnet-20241022-v2:0 already exists (ID: model-102bbe9a-9aeb-4405-8d7f-c102fe71dbc5), skipping
+2026-02-11 15:33:05,959 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/global.twelvelabs.pegasus-1-2-v1:0 (name: global.twelvelabs.pegasus-1-2)
+2026-02-11 15:33:05,960 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,965 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/global.twelvelabs.pegasus-1-2-v1:0 already exists (ID: model-7f40bc6c-3b08-4f75-8f28-917683e0c0b0), skipping
+2026-02-11 15:33:05,966 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.amazon.nova-micro-v1:0 (name: us.amazon.nova-micro)
+2026-02-11 15:33:05,969 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,976 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.amazon.nova-micro-v1:0 already exists (ID: model-ae78b40a-9452-4f84-bb19-9777fcd7c71d), skipping
+2026-02-11 15:33:05,978 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.writer.palmyra-x4-v1:0 (name: us.writer.palmyra-x4)
+2026-02-11 15:33:05,979 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,987 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.writer.palmyra-x4-v1:0 already exists (ID: model-586ef8ff-7ea2-4699-b4b4-31e311c41d05), skipping
+2026-02-11 15:33:05,989 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.writer.palmyra-x5-v1:0 (name: us.writer.palmyra-x5)
+2026-02-11 15:33:05,992 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:05,999 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.writer.palmyra-x5-v1:0 already exists (ID: model-1b3dc574-9fe7-4f77-aba4-83faf6148861), skipping
+2026-02-11 15:33:06,000 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/global.amazon.nova-2-lite-v1:0 (name: global.amazon.nova-2-lite)
+2026-02-11 15:33:06,002 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,005 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/global.amazon.nova-2-lite-v1:0 already exists (ID: model-a660a354-ae4c-4d4e-94db-07f736029e8d), skipping
+2026-02-11 15:33:06,006 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.amazon.nova-2-lite-v1:0 (name: us.amazon.nova-2-lite)
+2026-02-11 15:33:06,007 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,015 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.amazon.nova-2-lite-v1:0 already exists (ID: model-7af8fb5d-99ee-4b69-933d-89c76442fdd5), skipping
+2026-02-11 15:33:06,017 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-opus-4-5-20251101-v1:0 (name: claude-opus-4-5-20251101)
+2026-02-11 15:33:06,017 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,022 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-opus-4-5-20251101-v1:0 already exists (ID: model-dea3d7b8-18a4-4953-abd8-7077ca34687d), skipping
+2026-02-11 15:33:06,023 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-opus-4-1-20250805-v1:0 (name: claude-opus-4-1-20250805)
+2026-02-11 15:33:06,023 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,027 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-opus-4-1-20250805-v1:0 already exists (ID: model-09abbad1-b95e-4b4e-99cd-4538f121c86d), skipping
+2026-02-11 15:33:06,027 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-sonnet-4-5-20250929-v1:0 (name: claude-sonnet-4-5-20250929)
+2026-02-11 15:33:06,028 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,030 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-sonnet-4-5-20250929-v1:0 already exists (ID: model-78207f8d-95f3-4d17-a45c-be6607680770), skipping
+2026-02-11 15:33:06,031 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.amazon.nova-lite-v1:0 (name: us.amazon.nova-lite)
+2026-02-11 15:33:06,031 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,035 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.amazon.nova-lite-v1:0 already exists (ID: model-43564828-213c-4c69-b4a7-3229391c3cfd), skipping
+2026-02-11 15:33:06,036 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-opus-4-6-v1 (name: claude-opus-4-6)
+2026-02-11 15:33:06,037 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,042 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-opus-4-6-v1 already exists (ID: model-469bd38c-3d29-4459-b441-7f09a81f655b), skipping
+2026-02-11 15:33:06,044 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0 (name: claude-haiku-4-5-20251001)
+2026-02-11 15:33:06,044 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:06,050 - Letta.letta.services.provider_manager - INFO -     LLM model bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0 already exists (ID: model-32860c51-0c94-4e4b-9e93-d6fc8f1ce146), skipping
+2026-02-11 15:33:06,052 - Letta.letta.services.provider_manager - INFO - Processing 0 embedding models for provider bedrock
+2026-02-11 15:33:06,084 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Reading org-scoped model Provider without actor. IDs: ['provider-d4e4cd89-bec5-4d7f-a32e-06cfb80d1dc2']. This bypasses organization filtering.
+2026-02-11 15:33:06,996 - Letta.letta.server.server - INFO - Synced 52 LLM models and 0 embedding models for provider bedrock
+2026-02-11 15:33:06,997 - Letta.letta.services.provider_manager - INFO - === Starting sync for provider 'letta' (ID: provider-191e3f4b-abe4-4205-ab81-932039746fed) ===
+2026-02-11 15:33:06,999 - Letta.letta.services.provider_manager - INFO -   Organization ID: None
+2026-02-11 15:33:06,999 - Letta.letta.services.provider_manager - INFO -   LLM models to sync: ['letta/letta-free']
+2026-02-11 15:33:07,000 - Letta.letta.services.provider_manager - INFO -   Embedding models to sync: ['letta/letta-free']
+2026-02-11 15:33:07,902 - Letta.letta.services.provider_manager - INFO - Processing 1 LLM models for provider letta
+2026-02-11 15:33:07,904 - Letta.letta.services.provider_manager - INFO -   Checking LLM model: letta/letta-free (name: letta-free)
+2026-02-11 15:33:07,905 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:08,522 - Letta.letta.services.provider_manager - INFO -     LLM model letta/letta-free already exists (ID: model-475579d9-d04f-4629-86ec-3b1283afdf01), skipping
+2026-02-11 15:33:08,522 - Letta.letta.services.provider_manager - INFO - Processing 1 embedding models for provider letta
+2026-02-11 15:33:08,525 - Letta.letta.services.provider_manager - INFO -   Checking embedding model: letta/letta-free (name: letta-free)
+2026-02-11 15:33:08,526 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model ProviderModel without actor. This bypasses organization filtering.
+2026-02-11 15:33:08,533 - Letta.letta.services.provider_manager - INFO -     Embedding model letta/letta-free already exists (ID: model-91914330-4ea1-4d00-b9ac-287bca73209b), skipping
+2026-02-11 15:33:08,560 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Reading org-scoped model Provider without actor. IDs: ['provider-191e3f4b-abe4-4205-ab81-932039746fed']. This bypasses organization filtering.
+2026-02-11 15:33:09,500 - Letta.letta.server.server - INFO - Synced 1 LLM models and 1 embedding models for provider letta
+2026-02-11 15:33:09,502 - Letta.letta.data_sources.redis_client - INFO - Redis not configured, using noop client
+2026-02-11 15:33:09,884 - Letta.letta.orm.sqlalchemy_base - WARNING - SECURITY: Listing org-scoped model SandboxConfig without actor. This bypasses organization filtering.
+2026-02-11 15:33:10,539 - Letta.letta.jobs.scheduler - INFO - Batch job polling is disabled.
+2026-02-11 15:33:10,540 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Scheduler initialization completed
+2026-02-11 15:33:10,541 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Lifespan startup completed
+2026-02-11 15:35:53,680 - Letta.letta.services.agent_manager - INFO - Overriding include_base_tool_rules to False for model: letta-free
+2026-02-11 15:35:54,732 - Letta.letta.orm.sqlalchemy_base - INFO - Handling DBAPIError: <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+2026-02-11 15:35:54,733 - Letta.letta.orm.sqlalchemy_base - INFO - Extracted error_code: 42601
+2026-02-11 15:35:55,148 - Letta.letta.server.rest_api.middleware.logging - ERROR - Unhandled exception in request: ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+[SQL: 
+                INSERT OR IGNORE INTO message_sequence (id, next_val)
+                SELECT 1, COALESCE(MAX(sequence_id), 0) + 1
+                FROM messages
+            ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 526, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 773, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\asyncpg\connection.py", line 638, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\asyncpg\connection.py", line 657, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\asyncpg\connection.py", line 443, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 165, in prepare
+asyncpg.exceptions.PostgresSyntaxError: syntax error at or near "OR"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\memoRaxis\third_party\letta\letta\server\rest_api\middleware\logging.py", line 124, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 107, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\server\rest_api\routers\v1\agents.py", line 510, in create_agent
+    return await server.create_agent_async(agent, actor=actor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\otel\tracing.py", line 393, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\server\server.py", line 575, in create_agent_async
+    main_agent = await self.agent_manager.create_agent_async(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\otel\tracing.py", line 393, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\services\agent_manager.py", line 624, in create_agent_async
+    await self.message_manager.create_many_messages_async(
+  File "D:\memoRaxis\third_party\letta\letta\otel\tracing.py", line 393, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\services\message_manager.py", line 563, in create_many_messages_async
+    created_messages = await MessageModel.batch_create_async(orm_messages, session, actor=actor, no_commit=True, no_refresh=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\orm\sqlalchemy_base.py", line 56, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\orm\sqlalchemy_base.py", line 594, in batch_create_async
+    cls._handle_dbapi_error(e)
+  File "D:\memoRaxis\third_party\letta\letta\orm\sqlalchemy_base.py", line 578, in batch_create_async
+    await db_session.flush()
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 787, in flush
+    await greenlet_spawn(self.sync_session.flush, objects=objects)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 4359, in _flush
+    self.dispatch.before_flush(self, flush_context, objects)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\event\attr.py", line 387, in __call__
+    fn(*args, **kw)
+  File "D:\memoRaxis\third_party\letta\letta\orm\message.py", line 143, in set_sequence_id_for_sqlite_bulk
+    session.execute(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 2258, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+[SQL: 
+                INSERT OR IGNORE INTO message_sequence (id, next_val)
+                SELECT 1, COALESCE(MAX(sequence_id), 0) + 1
+                FROM messages
+            ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-02-11 15:35:55,161 - Letta.letta.server.rest_api.app - ERROR - Unhandled error: ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+[SQL: 
+                INSERT OR IGNORE INTO message_sequence (id, next_val)
+                SELECT 1, COALESCE(MAX(sequence_id), 0) + 1
+                FROM messages
+            ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 526, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 773, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\asyncpg\connection.py", line 638, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\asyncpg\connection.py", line 657, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\asyncpg\connection.py", line 443, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 165, in prepare
+asyncpg.exceptions.PostgresSyntaxError: syntax error at or near "OR"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\cors.py", line 87, in __call__
+    await self.app(scope, receive, send)
+  File "D:\memoRaxis\third_party\letta\letta\server\rest_api\middleware\request_id.py", line 66, in __call__
+    await self.app(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "D:\anaconda3\envs\memoraxis\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_utils.py", line 87, in collapse_excgroups
+    raise exc
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\server\rest_api\middleware\logging.py", line 124, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 107, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\fastapi\routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\server\rest_api\routers\v1\agents.py", line 510, in create_agent
+    return await server.create_agent_async(agent, actor=actor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\otel\tracing.py", line 393, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\server\server.py", line 575, in create_agent_async
+    main_agent = await self.agent_manager.create_agent_async(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\otel\tracing.py", line 393, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\services\agent_manager.py", line 624, in create_agent_async
+    await self.message_manager.create_many_messages_async(
+  File "D:\memoRaxis\third_party\letta\letta\otel\tracing.py", line 393, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\services\message_manager.py", line 563, in create_many_messages_async
+    created_messages = await MessageModel.batch_create_async(orm_messages, session, actor=actor, no_commit=True, no_refresh=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\orm\sqlalchemy_base.py", line 56, in async_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\memoRaxis\third_party\letta\letta\orm\sqlalchemy_base.py", line 594, in batch_create_async
+    cls._handle_dbapi_error(e)
+  File "D:\memoRaxis\third_party\letta\letta\orm\sqlalchemy_base.py", line 578, in batch_create_async
+    await db_session.flush()
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 787, in flush
+    await greenlet_spawn(self.sync_session.flush, objects=objects)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 4359, in _flush
+    self.dispatch.before_flush(self, flush_context, objects)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\event\attr.py", line 387, in __call__
+    fn(*args, **kw)
+  File "D:\memoRaxis\third_party\letta\letta\orm\message.py", line 143, in set_sequence_id_for_sqlite_bulk
+    session.execute(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\orm\session.py", line 2258, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "D:\anaconda3\envs\memoraxis\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "OR"
+[SQL: 
+                INSERT OR IGNORE INTO message_sequence (id, next_val)
+                SELECT 1, COALESCE(MAX(sequence_id), 0) + 1
+                FROM messages
+            ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-02-11 15:36:55,685 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Starting lifespan shutdown
+2026-02-11 15:36:55,686 - Letta.letta.jobs.scheduler - INFO - Shutting down: Non-leader instance.
+2026-02-11 15:36:55,686 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Scheduler shutdown completed
+2026-02-11 15:36:55,687 - Letta.letta.server.rest_api.app - INFO - [Worker 204232] Lifespan shutdown completed
