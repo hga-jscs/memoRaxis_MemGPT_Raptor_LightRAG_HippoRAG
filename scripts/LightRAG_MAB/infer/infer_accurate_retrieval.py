@@ -15,6 +15,12 @@ from src.benchmark_utils import load_benchmark_data, parse_instance_indices
 from src.llm_interface import OpenAIClient
 from src.adaptors import SingleTurnAdaptor, IterativeAdaptor, PlanAndActAdaptor, AdaptorResult
 from src.lightrag_memory import LightRAGMemory
+from src.token_tracker import (
+    reset_token_usage,
+    set_token_phase,
+    get_token_usage_snapshot,
+    print_token_usage_debug,
+)
 
 logger = get_logger()
 
@@ -132,6 +138,8 @@ def evaluate_one_instance(
     print_scores: bool = True,
 ):
     logger.info(f"=== Evaluating Instance {instance_idx} (LightRAG) ===")
+    reset_token_usage()
+    set_token_phase("infer")
     data_path = "MemoryAgentBench/data/Accurate_Retrieval-00000-of-00001.parquet"
 
     try:
@@ -198,9 +206,13 @@ def evaluate_one_instance(
     filename += ".json"
     output_file = output_dir / filename
 
+    token_stats = get_token_usage_snapshot()
+    final_report["token_usage"] = token_stats
+
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(final_report, f, indent=2, ensure_ascii=False)
 
+    print_token_usage_debug(prefix=f"[infer instance={instance_idx}] ")
     logger.info(f"Instance {instance_idx} Finished. Results saved to {output_file}")
 
 

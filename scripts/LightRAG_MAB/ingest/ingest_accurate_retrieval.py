@@ -9,6 +9,12 @@ sys.path.append(str(PROJECT_ROOT))
 from src.logger import get_logger
 from src.benchmark_utils import load_benchmark_data, chunk_context, parse_instance_indices
 from src.lightrag_memory import LightRAGMemory
+from src.token_tracker import (
+    reset_token_usage,
+    set_token_phase,
+    get_token_usage_snapshot,
+    print_token_usage_debug,
+)
 
 logger = get_logger()
 
@@ -21,6 +27,8 @@ def ingest_one_instance(
     reset: bool,
 ):
     logger.info(f"=== Processing Instance {instance_idx} (LightRAG) ===")
+    reset_token_usage()
+    set_token_phase("ingest")
     data_path = "MemoryAgentBench/data/Accurate_Retrieval-00000-of-00001.parquet"
 
     try:
@@ -50,6 +58,14 @@ def ingest_one_instance(
     memory.build_index(doc_id=f"acc_ret_{instance_idx}")
 
     print(f"\nIngestion complete. LightRAG workspace saved at: {out_dir}")
+
+    token_stats = get_token_usage_snapshot()
+    print_token_usage_debug(prefix=f"[ingest instance={instance_idx}] ")
+    token_out = Path("out") / "token_stats"
+    token_out.mkdir(parents=True, exist_ok=True)
+    token_file = token_out / f"ingest_lightrag_acc_ret_{instance_idx}.json"
+    token_file.write_text(__import__("json").dumps(token_stats, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Token stats saved: {token_file}")
 
 
 def main():
