@@ -17,6 +17,7 @@ from lightrag.utils import always_get_an_event_loop
 from lightrag import LightRAG, QueryParam
 from lightrag.utils import EmbeddingFunc
 from lightrag.llm.openai import openai_embed, openai_complete_if_cache
+from .token_tracker import record_token_usage
 
 logger = get_logger()
 
@@ -100,12 +101,19 @@ class LightRAGMemory(BaseMemorySystem):
             )
         else:
             # openai / openai_compat：走 LightRAG 自带的 openai_embed
-            _embed = partial(
+            _embed_inner = partial(
                 openai_embed.func,
                 model=emb_model,
                 base_url=str(emb_base_url) if emb_base_url else None,
                 api_key=str(emb_api_key) if emb_api_key else None,
             )
+
+            async def _embed(texts: list[str], **kwargs: Any) -> np.ndarray:
+                # LightRAG 默认 embed 接口不返回 usage，这里做可解释的估算统计
+                estimated = sum(max(1, len((t or "").split())) for t in texts or [])
+                arr = await _embed_inner(texts, **kwargs)
+                record_token_usage("lightrag_embedding", total_tokens=estimated, estimated=True)
+                return arr
 
             embedding_func = EmbeddingFunc(
                 embedding_dim=emb_dim,
@@ -129,7 +137,7 @@ class LightRAGMemory(BaseMemorySystem):
             **kwargs: Any,
         ) -> str:
             # LightRAG 会额外塞一些 kwargs（如 _priority 等），这里直接透传
-            return await openai_complete_if_cache(
+            out = await openai_complete_if_cache(
                 model=llm_model,
                 prompt=prompt,
                 system_prompt=system_prompt,
@@ -139,6 +147,16 @@ class LightRAGMemory(BaseMemorySystem):
                 timeout=llm_timeout,
                 **kwargs,
             )
+            est_prompt = max(1, len((prompt or "").split()))
+            est_completion = max(1, len((out or "").split()))
+            record_token_usage(
+                "lightrag_internal_llm",
+                prompt_tokens=est_prompt,
+                completion_tokens=est_completion,
+                total_tokens=est_prompt + est_completion,
+                estimated=True,
+            )
+            return out
 
         # -----------------------------
         # 3) LightRAG instance

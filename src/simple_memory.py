@@ -12,6 +12,7 @@ import psycopg2
 from psycopg2.extras import Json
 from src.memory_interface import BaseMemorySystem, Evidence
 from src.config import get_config
+from src.token_tracker import record_token_usage
 
 # 尝试导入 openai，如果不存在则报错
 try:
@@ -88,6 +89,14 @@ class SimpleRAGMemory(BaseMemorySystem):
                 input=[text],
                 model=self._emb_model
             )
+            usage = getattr(resp, "usage", None)
+            if usage:
+                prompt_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+                total_tokens = int(getattr(usage, "total_tokens", prompt_tokens) or 0)
+                record_token_usage("embedding", prompt_tokens=prompt_tokens, total_tokens=total_tokens)
+            else:
+                est = max(1, len(text.split()))
+                record_token_usage("embedding", total_tokens=est, estimated=True)
             return resp.data[0].embedding
         except Exception as e:
             self._logger.error(f"Embedding failed: {e}")

@@ -10,6 +10,7 @@ from raptor import RetrievalAugmentation, RetrievalAugmentationConfig
 from raptor.EmbeddingModels import BaseEmbeddingModel
 from raptor.SummarizationModels import BaseSummarizationModel
 from raptor.QAModels import BaseQAModel
+from src.token_tracker import record_token_usage
 class _NoQAModel(BaseQAModel):
     def answer_question(self, *args, **kwargs):
         return ""
@@ -40,6 +41,13 @@ class _CompatEmbeddingModel(BaseEmbeddingModel):
             r.raise_for_status()
             return r.json()['data']['embedding']
         resp = self._client.embeddings.create(input=text, model=self.model)
+        usage = getattr(resp, "usage", None)
+        if usage:
+            prompt_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+            total_tokens = int(getattr(usage, "total_tokens", prompt_tokens) or 0)
+            record_token_usage("embedding", prompt_tokens=prompt_tokens, total_tokens=total_tokens)
+        else:
+            record_token_usage("embedding", total_tokens=max(1, len(text.split())), estimated=True)
         return resp.data[0].embedding
 
 

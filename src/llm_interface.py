@@ -15,6 +15,7 @@ except ImportError:
     OpenAI = None
 
 from .logger import get_logger
+from .token_tracker import record_token_usage
 
 
 class BaseLLMClient(ABC):
@@ -91,8 +92,23 @@ class OpenAIClient(BaseLLMClient):
             content = response.choices[0].message.content
             
             if response.usage:
-                self._total_tokens += response.usage.total_tokens
-                
+                usage = response.usage
+                prompt_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+                completion_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
+                total_tokens = int(getattr(usage, "total_tokens", 0) or 0)
+                self._total_tokens += total_tokens
+                record_token_usage(
+                    "llm_chat",
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                    total_tokens=total_tokens,
+                )
+            else:
+                # 兼容某些 OpenAI-compatible 网关不返回 usage
+                estimated = len(prompt.split()) + max(len((content or "").split()), 1)
+                self._total_tokens += estimated
+                record_token_usage("llm_chat", total_tokens=estimated, estimated=True)
+
             return content
         except Exception as e:
             self._logger.error("OpenAI 调用失败: %s", e)
@@ -157,7 +173,9 @@ class MockLLMClient(BaseLLMClient):
         """模拟生成文本"""
         self._call_count += 1
         # 模拟 Token 消耗：输入 + 输出
-        self._total_tokens += len(prompt.split()) + 50
+        consumed = len(prompt.split()) + 50
+        self._total_tokens += consumed
+        record_token_usage("llm_chat_mock", total_tokens=consumed, estimated=True)
         self._logger.debug("MockLLM generate 调用 #%d", self._call_count)
 
         # 根据 prompt 内容返回不同的模拟响应
@@ -170,7 +188,9 @@ class MockLLMClient(BaseLLMClient):
     def generate_json(self, prompt: str, **kwargs) -> Dict[str, Any]:
         """模拟生成 JSON 响应"""
         self._call_count += 1
-        self._total_tokens += len(prompt.split()) + 30
+        consumed = len(prompt.split()) + 30
+        self._total_tokens += consumed
+        record_token_usage("llm_json_mock", total_tokens=consumed, estimated=True)
         self._logger.debug("MockLLM generate_json 调用 #%d", self._call_count)
 
         # 根据 prompt 内容返回不同的模拟 JSON

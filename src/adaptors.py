@@ -116,13 +116,15 @@ class SingleTurnAdaptor(BaseAdaptor):
         self._log_evidences(evidences, "[SingleTurn]")
 
         # 步骤 2: 综合生成
+        token_before = int(getattr(self._llm, "total_tokens", 0) or 0)
         prompt = self._config.get_prompt("single_turn", "synthesis").format(
             task=task, evidence_list=self._format_evidence_list(evidences)
         )
         answer = self._llm.generate(prompt)
 
         # 获取 Token 统计（如果 LLM 客户端支持）
-        token_consumption = getattr(self._llm, "total_tokens", 0)
+        token_after = int(getattr(self._llm, "total_tokens", 0) or 0)
+        token_consumption = max(token_after - token_before, 0)
 
         self._logger.info("[SingleTurn] 任务完成")
 
@@ -166,6 +168,7 @@ class IterativeAdaptor(BaseAdaptor):
         """
         self._logger.info("[Iterative] 开始处理任务: %s", task)
 
+        token_before = int(getattr(self._llm, "total_tokens", 0) or 0)
         all_evidences: List[Evidence] = []
         previous_queries: List[str] = []
         steps = 0
@@ -206,7 +209,8 @@ class IterativeAdaptor(BaseAdaptor):
         )
         answer = self._llm.generate(synthesis_prompt)
 
-        token_consumption = getattr(self._llm, "total_tokens", 0)
+        token_after = int(getattr(self._llm, "total_tokens", 0) or 0)
+        token_consumption = max(token_after - token_before, 0)
 
         self._logger.info("[Iterative] 任务完成，共 %d 步", steps)
 
@@ -256,6 +260,7 @@ class PlanAndActAdaptor(BaseAdaptor):
         """
         self._logger.info("[PlanAndAct] 开始处理任务: %s", task)
 
+        token_before = int(getattr(self._llm, "total_tokens", 0) or 0)
         all_evidences: List[Evidence] = []
         executed_steps: List[Dict[str, Any]] = []
         steps = 0
@@ -348,7 +353,8 @@ class PlanAndActAdaptor(BaseAdaptor):
         )
         answer = self._llm.generate(synthesis_prompt)
 
-        token_consumption = getattr(self._llm, "total_tokens", 0)
+        token_after = int(getattr(self._llm, "total_tokens", 0) or 0)
+        token_consumption = max(token_after - token_before, 0)
 
         self._logger.info(
             "[PlanAndAct] 任务完成，共 %d 步，补充 %d 次", steps, additions_count
